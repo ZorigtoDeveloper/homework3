@@ -1,6 +1,9 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+// Package imports:
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,7 +56,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 5.0),
                         decoration: BoxDecoration(color: Colors.amber),
-                        child: SvgPicture.asset("assets/images/delete.svg"));
+                        child: SvgPicture.network(
+                          "assets/images/delete.svg",
+                          placeholderBuilder: (BuildContext context) =>
+                              Container(
+                            padding: const EdgeInsets.all(30.0),
+                            child: const CircularProgressIndicator(),
+                          ),
+                        ));
                   },
                 );
               }).toList(),
